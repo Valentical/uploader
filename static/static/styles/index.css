@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+}
+
+a {
+    color: rgb(var(--blue, 74, 142, 204));
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(var(--sky, 0, 136, 204));
+    text-decoration: underline;
+}
