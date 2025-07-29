@@ -10,6 +10,18 @@ import { v4 as uuidv4 } from 'uuid';
 /**
  * @param {{ request: Request }} event
  */
+
+const corsHeaders = {
+    'Access-Control-Allow-Origin': '*', // or 'https://yourfrontend.com'
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+};
+export async function OPTIONS() {
+    return new Response(null, {
+        status: 204,
+        headers: corsHeaders
+    });
+}
 export async function POST({ request }) {
     const formData = await request.formData();
     const file = formData.get('file');
@@ -33,12 +45,18 @@ export async function POST({ request }) {
             key: filename,
             checksum: null,
             origin: null
-        }), { status: 200 });
+        }), {
+            status: 200,
+            headers: corsHeaders
+        });
     } catch (err) {
         let message = 'Unknown error';
         if (err && typeof err === 'object' && err !== null && 'message' in err) {
             message = String(err.message);
         }
-        return new Response(JSON.stringify({ error: message }), { status: 500 });
+        return new Response(JSON.stringify({ error: message }), {
+            status: 500,
+            headers: corsHeaders
+        });
     }
 }
