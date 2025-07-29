@@ -1,0 +1,1 @@
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK6vo2fBcsOROYViRLqfjylK16VFhHTtKtp/U92lY+TV simonvmanasek@gmail.com
